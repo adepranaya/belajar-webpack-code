@@ -6,3 +6,10 @@ $danger: salmon;
 body {
   background-color: $bg;
 }
+
+.logo {
+  margin: 20px auto;
+  width: 150px;
+  display: block;
+  border-radius: 50%;
+}
