@@ -10,7 +10,15 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const PATHS = {
   src: path.join(__dirname, 'src'),
 };
-
+function collectSafelist() {
+  return {
+    standard: [
+      'modal',
+      /^modal-/,
+      'show',
+    ],
+  };
+}
 module.exports = merge(config, {
   mode: 'production',
   output: {
@@ -37,6 +45,7 @@ module.exports = merge(config, {
     }),
     new PurgeCSSPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      safelist: collectSafelist,
     }),
   ],
 });
